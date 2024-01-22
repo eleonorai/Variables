@@ -1,0 +1,43 @@
+--1
+--DECLARE @n1 float = 10.2
+--DECLARE @n2 float = 6.2
+--DECLARE @n3 float = 11.2
+
+--PRINT (@n1 + @n2 + @n3)/ 3
+
+--2
+DECLARE @today TIME = GETDATE()
+IF @today BETWEEN '00:00:00' AND '12:00:00'
+BEGIN
+ PRINT 'Доброе утро!'
+END 
+ELSE IF @today BETWEEN '12:00:00' AND  '17:00:00'
+BEGIN 
+ PRINT 'Добрый день!'
+END 
+ELSE
+BEGIN 
+ PRINT 'Добрый вечер!'
+END 
+ 
+--3
+DECLARE @ticketNum INT = 123006
+
+IF @ticketNum BETWEEN 100000 AND 999999
+BEGIN
+ DECLARE @firstSum INT = @ticketNum / 100000 + (@ticketNum / 10000) % 10 + (@ticketNum / 1000) % 10
+ DECLARE @secondSum INT = (@ticketNum / 100) % 10 + (@ticketNum / 10) % 10 + @ticketNum % 10
+END
+ELSE 
+BEGIN 
+ PRINT 'это не шестизначное число.'
+END
+IF @firstSum = @secondSum
+BEGIN 
+ PRINT 'Это счастливый трамвайный билет!'
+END
+ELSE
+BEGIN 
+ PRINT 'Это не счастливый трамвайный билет.'
+END
+
